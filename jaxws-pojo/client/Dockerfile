@@ -7,13 +7,13 @@ FROM registry.access.redhat.com/jboss-eap-7/eap72-openshift
 MAINTAINER "Sanjeeva Srinath" "sanjeevsrinath@gmail.com"
 
 # Copy war to deployments folder
-COPY target/jaxws-pojo-service.war $JBOSS_HOME/standalone/deployments/
+COPY target/jaxws-pojo-client.jar $JBOSS_HOME/standalone/deployments/
 
 # User root to modify war owners
 USER root
 
 # Modify owners war
-RUN chown jboss:jboss $JBOSS_HOME/standalone/deployments/jaxws-pojo-service.war
+RUN chown jboss:jboss $JBOSS_HOME/standalone/deployments/jaxws-pojo-client.jar
 
 # Important, use jboss user to run image
 USER jboss

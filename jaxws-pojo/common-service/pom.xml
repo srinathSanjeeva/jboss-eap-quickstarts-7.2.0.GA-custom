@@ -26,7 +26,7 @@
     </parent>
     <artifactId>jaxws-pojo-common-service</artifactId>
     <packaging>jar</packaging>
-    <name>Quickstart: jaxws-pojo - client</name>
+    <name>Quickstart: jaxws-pojo - common-service</name>
     <description>This project is a working example of a JAX-WS web service endpoint; this is the client POM file</description>
 
     <licenses>
