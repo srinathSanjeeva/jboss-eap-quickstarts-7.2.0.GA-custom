@@ -16,17 +16,20 @@
  */
 package org.jboss.quickstarts.ws.jaxws.samples.jsr181pojo;
 
+import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
+
 
 /**
  *
  * @author rsearls@redhat.com
  */
+@Stateless
 @WebService
-@SOAPBinding(style = SOAPBinding.Style.RPC)
-public class JSEBean {
+@SOAPBinding(style = SOAPBinding.Style.DOCUMENT)
+public class JSEBean implements IJSEBeanRemote {
     @WebMethod
     public String echo(String input) {
         return "JSEBean pojo: " + input;

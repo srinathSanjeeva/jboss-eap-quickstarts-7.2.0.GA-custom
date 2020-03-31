@@ -16,22 +16,18 @@
     limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                              http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.jboss.eap.quickstarts</groupId>
-        <artifactId>quickstart-parent</artifactId>
-        <!--
-        Maintain separation between the artifact id and the version to help prevent
-        merge conflicts between commits changing the GA and those changing the V.
-        -->
+        <artifactId>jaxws-pojo</artifactId>
         <version>7.2.0.GA</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>jaxws-pojo</artifactId>
-    <packaging>pom</packaging>
-    <name>Quickstart: jaxws-pojo</name>
-    <description>This project is a working example of a JAX-WS web service POJO endpoint</description>
+    <artifactId>jaxws-pojo-common-service</artifactId>
+    <packaging>jar</packaging>
+    <name>Quickstart: jaxws-pojo - client</name>
+    <description>This project is a working example of a JAX-WS web service endpoint; this is the client POM file</description>
 
     <licenses>
         <license>
@@ -41,22 +37,27 @@
         </license>
     </licenses>
 
-    <modules>
-    	<module>common-service</module>
-        <module>service</module>
-        <module>client</module>
-    </modules>
+    <dependencies>
+
+      <dependency>
+        <groupId>javax.jws</groupId>
+        <artifactId>jsr181-api</artifactId>
+        <version>1.0.0.MR1-redhat-8</version>
+      </dependency>
+
+    </dependencies>
 
     <build>
         <plugins>
+            <!-- Allows Client to be run via 'mvn exec:java' -->
             <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
-                    <skip>true</skip>
+                    <mainClass>org.jboss.quickstarts.ws.client.Client</mainClass>
+                    <classpathScope>compile</classpathScope>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>

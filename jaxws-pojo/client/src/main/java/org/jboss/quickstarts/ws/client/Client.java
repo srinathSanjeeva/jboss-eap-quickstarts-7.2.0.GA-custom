@@ -20,7 +20,7 @@ import java.net.URL;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
-import org.jboss.quickstarts.ws.jaxws.samples.jsr181pojo.JSEBean;
+import org.jboss.quickstarts.ws.jaxws.samples.jsr181pojo.service.IJSEBean;
 
 /**
  * @author rsearls@redhat.com
@@ -34,7 +34,7 @@ public class Client {
         try {
             URL wsdlURL = new URL(endPointAddress + "?wsdl");
             Service service = Service.create(wsdlURL, serviceName);
-            JSEBean proxy = service.getPort(JSEBean.class);
+            IJSEBean proxy = service.getPort(IJSEBean.class);
             System.out.println(proxy.echo("pojoClient calling"));
         } catch (Exception e) {
             System.out.println(e);

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.quickstarts.ws.jaxws.samples.jsr181pojo;
+package org.jboss.quickstarts.ws.jaxws.samples.jsr181pojo.service;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -28,8 +28,8 @@ import javax.jws.soap.SOAPBinding;
  * Generated source version: 3.0.2
  */
 @WebService(targetNamespace = "http://jsr181pojo.samples.jaxws.ws.quickstarts.jboss.org/", name = "JSEBean")
-@SOAPBinding(style = SOAPBinding.Style.RPC)
-public interface JSEBean {
+@SOAPBinding(style = SOAPBinding.Style.DOCUMENT)
+public interface IJSEBean {
 
     @WebResult(name = "return", targetNamespace = "http://jsr181pojo.samples.jaxws.ws.quickstarts.jboss.org/", partName = "return")
     @WebMethod
