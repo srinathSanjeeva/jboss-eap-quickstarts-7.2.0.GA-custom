@@ -16,10 +16,14 @@
  */
 package org.jboss.quickstarts.ws.jaxws.samples.jsr181pojo;
 
+import javax.ejb.EJB;
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
+
+import org.jboss.as.quickstarts.ear.ejb.GreeterEJB;
 
 
 /**
@@ -27,11 +31,19 @@ import javax.jws.soap.SOAPBinding;
  * @author rsearls@redhat.com
  */
 @Stateless
+@Remote(IJSEBeanRemote.class)
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.DOCUMENT)
 public class JSEBean implements IJSEBeanRemote {
+
+    /**
+     * Injected GreeterEJB client
+     */
+    @EJB
+    private GreeterEJB greeterEJB;
+
     @WebMethod
     public String echo(String input) {
-        return "JSEBean pojo: " + input;
+        return greeterEJB.sayHello(input);
     }
 }

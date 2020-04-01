@@ -55,7 +55,14 @@
             <groupId>org.jboss.spec.javax.ejb</groupId>
             <artifactId>jboss-ejb-api_3.2_spec</artifactId>
             <scope>provided</scope>
-        </dependency>        
+        </dependency>   
+        <!-- Import the ejb project so that the web service uses the EJB -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>jaxws-ejb</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>             
     </dependencies>
     <build>
         <!-- Set the name for the deployable archive instead of using the default name with the version -->
